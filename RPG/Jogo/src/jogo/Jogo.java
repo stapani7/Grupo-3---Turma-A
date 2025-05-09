@@ -2,7 +2,7 @@ package jogo;
 import java.util.Scanner;
 /**
  *
- * Arthur Vieira - Guilherme Sanches - Joao Paulo Serafim - Mateus Stapani - Patrick Assis
+ * Arthur Vieira - Guilherme Sanches - Joao Paulo Serafim - Mateus Stapani - Patrick Assis Vieira
  */
 public class Jogo {
 
