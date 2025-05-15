@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class JogocomVoz {
 
-    // Método para falar texto usando PowerShell (Windows)
     public static void falarTexto(String texto) {
         try {
-            String comando = "PowerShell -Command \"Add-Type –AssemblyName System.Speech; "
+            String comando = "PowerShell -Command \"Add-Type -AssemblyName System.Speech; "
                     + "$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; "
+                    + "$speak.SelectVoice('Microsoft Maria Desktop'); "
                     + "$speak.Speak('" + texto.replace("'", "''") + "');\"";
             Runtime.getRuntime().exec(comando);
         } catch (Exception e) {
