@@ -1,10 +1,22 @@
-package jogo;
+
 import java.util.Scanner;
 /**
  *
  * Arthur Vieira - Guilherme Sanches - Joao Paulo Serafim - Mateus Stapani - Patrick Assis Vieira
  */
 public class Jogo {
+
+    public static void falarTexto(String texto) {
+    try {
+            String comando = "PowerShell -Command \"Add-Type –AssemblyName System.Speech; "
+                + "$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; "
+                + "$speak.SelectVoice('Microsoft Maria Desktop'); "
+                + "$speak.Speak('" + texto.replace("'", "''") + "');\"";
+            Runtime.getRuntime().exec(comando);
+        } catch (Exception e) {
+            System.out.println("Erro ao tentar falar: " + e.getMessage());
+        }
+    }
 
     public static void coletarDadosJogador() {
         Scanner input = new Scanner(System.in);
@@ -109,4 +121,4 @@ public class Jogo {
         desafio4();
         desafio5();
     }
-}
+} 
