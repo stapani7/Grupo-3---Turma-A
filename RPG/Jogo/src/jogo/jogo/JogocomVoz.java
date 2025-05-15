@@ -8,8 +8,11 @@ public class JogocomVoz {
             String comando = "PowerShell -Command \"Add-Type -AssemblyName System.Speech; "
                     + "$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; "
                     + "$speak.SelectVoice('Microsoft Maria Desktop'); "
+                    + "$speak.Volume = 75; "
+                    + "$speak.Rate = 5; "
                     + "$speak.Speak('" + texto.replace("'", "''") + "');\"";
-            Runtime.getRuntime().exec(comando);
+            Process p = Runtime.getRuntime().exec(comando);
+            p.waitFor();
         } catch (Exception e) {
             System.out.println("Erro ao tentar falar: " + e.getMessage());
         }
@@ -17,132 +20,199 @@ public class JogocomVoz {
 
     public static void coletarDadosJogador() {
         Scanner input = new Scanner(System.in);
-        falarTexto("Digite seu nome:");
         System.out.print("Digite seu nome: ");
+        falarTexto("Digite seu nome:");
         String nome = input.nextLine();
-        falarTexto("Digite seu curso:");
         System.out.print("Digite seu curso: ");
+        falarTexto("Digite seu curso:");
         String curso = input.nextLine();
-        falarTexto("Digite sua turma:");
         System.out.print("Digite sua turma: ");
+        falarTexto("Digite sua turma:");
         String turma = input.nextLine();
         String mensagem = "\nBem-vindo, " + nome + " do curso " + curso + ", turma " + turma + "!\n";
-        falarTexto(mensagem);
         System.out.println(mensagem);
+        falarTexto(mensagem);
     }
 
-    public static void desafio1(){
+    public static void desafio1() {
         Scanner input = new Scanner(System.in);
-        String intro = "Bem vindo ao seu primeiro desafio. Se você está aqui, tem o potencial de mudar o mundo problemático em que vivemos. Seu primeiro desafio é numerar a ordem desses acontecimentos. Vamos ver se você sabe algo de algoritmos.";
-        falarTexto(intro);
-        System.out.println(intro);
-        int i = 0;
-        while(i == 0){
-            String opcoes = "1. Sair do banco\n"
-                    + "2. Aguardar a vez de ser atendido\n"
-                    + "3. Digitar a senha\n"
-                    + "4. Entrar na fila do caixa\n"
-                    + "5. Conferir o valor em dinheiro\n"
-                    + "6. Entrar no banco\n"
-                    + "7. Informar o valor a ser retirado\n"
-                    + "8. Pegar o comprovante, o cartão e o dinheiro\n"
-                    + "9. Entregar o cartão ao funcionário que atende no caixa\n";
-            falarTexto(opcoes);
+        String introImpresso = "Bem vindo ao seu primeiro desafio. Seu primeiro desafio é numerar a ordem desses acontecimentos.";
+        String introFala = "Bem vindo ao seu primeiro desafio. Se você está aqui, tem o potencial de mudar o mundo problemático em que vivemos. Seu primeiro desafio é numerar a ordem desses acontecimentos. Vamos ver se você sabe algo de algoritmos.";
+        String opcoes = "1 - Sair do banco.\n"
+                + "2 - Aguardar a vez de ser atendido.\n"
+                + "3 - Digitar a senha.\n"
+                + "4 - Entrar na fila do caixa.\n"
+                + "5 - Conferir o valor em dinheiro.\n"
+                + "6 - Entrar no banco.\n"
+                + "7 - Informar o valor a ser retirado.\n"
+                + "8 - Pegar o comprovante, o cartão e o dinheiro.\n"
+                + "9 - Entregar o cartão ao funcionário que atende no caixa.\n";
+        String perguntaImpresso = "Coloque todos os números em ordem, de maneira seguida sem espaço ou símbolos, somente números. Exemplo: 4231.";
+        String perguntaFala = "Coloque todos os números em ordem, de maneira seguida sem espaço ou símbolos, somente números. Por exemplo: quatro dois três um.";
+
+        while (true) {
+            System.out.println(introImpresso);
             System.out.println(opcoes);
-            String pergunta = "Coloque todos os números em ordem, de maneira seguida sem espaço ou símbolos, somente números. Exemplo: quatro dois três um.";
-            falarTexto(pergunta);
-            System.out.println("Coloque todos os número em ordem, de maneira seguida sem espaço ou simbolos, somente números(Exemplo:4231): ");
+            System.out.println(perguntaImpresso);
+            falarTexto(introFala + " " + opcoes + " " + perguntaFala);
+            int escolha;
+            do {
+                System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
+                escolha = input.nextInt();
+                input.nextLine(); // Limpa o buffer
+                if (escolha == 2) {
+                    falarTexto(introFala + " " + opcoes + " " + perguntaFala);
+                }
+            } while (escolha != 1);
+
+            System.out.print("Coloque todos os número em ordem, de maneira seguida sem espaço ou simbolos, somente números(Exemplo:4231): ");
+            falarTexto("Digite sua resposta.");
             int respostad1 = input.nextInt();
-            if (respostad1 == 642973851){
-                falarTexto("Parabéns, você acertou.");
+            if (respostad1 == 642973851) {
                 System.out.println("Parabéns você acertou");
-                i++;
-            }else{
-                falarTexto("Tente novamente.");
+                falarTexto("Parabéns, você acertou.");
+                break;
+            } else {
                 System.out.println("Tente novamente");
+                falarTexto("Tente novamente.");
             }
         }
-        falarTexto("Agora que você já sabe como funciona o jogo, vamos para o próximo desafio.");
         System.out.println("Agora que você já sabe como funciona o jogo, vamos para o próximo desafio");
+        falarTexto("Agora que você já sabe como funciona o jogo, vamos para o próximo desafio.");
     }
 
     public static void desafio2() {
         Scanner input = new Scanner(System.in);
-        String pergunta = "Desafio dois: Qual será a saída desse algoritmo? int x igual a cinco; int y igual a três; se x maior que y, imprimir x mais y; senão, imprimir x menos y.";
-        falarTexto(pergunta);
-        System.out.println("\nDesafio 2: Qual será a saída desse algoritmo?");
-        System.out.println("int x = 5;\nint y = 3;\nif(x > y) {\n    System.out.println(x + y);\n} else {\n    System.out.println(x - y);\n}");
-        falarTexto("Digite a resposta correta:");
-        System.out.print("Digite a resposta correta: ");
-        int resposta = input.nextInt();
-        if (resposta == 8) {
-            falarTexto("Correto! Vamos para o próximo desafio.");
-            System.out.println("Correto! Vamos para o próximo desafio.");
-        } else {
-            falarTexto("Errado! A resposta correta era oito. Vamos continuar.");
-            System.out.println("Errado! A resposta correta era 8. Vamos continuar.");
+        String enunciado = "Desafio 2: Qual será a saída desse algoritmo?";
+        String codigo = "int x = 5;\nint y = 3;\nif(x > y) {\n    System.out.println(x + y);\n} else {\n    System.out.println(x - y);\n}";
+        String fala = "Qual será a saída desse algoritmo? Se x igual a cinco e y igual a três, se x maior que y, imprimir x mais y, senão imprimir x menos y.";
+        while (true) {
+            System.out.println("\n" + enunciado);
+            System.out.println(codigo);
+            falarTexto(fala);
+            int escolha;
+            do {
+                System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
+                escolha = input.nextInt();
+                input.nextLine();
+                if (escolha == 2) {
+                    falarTexto(fala);
+                }
+            } while (escolha != 1);
+
+            System.out.print("Digite a resposta correta: ");
+            falarTexto("Digite a resposta correta.");
+            int resposta = input.nextInt();
+            if (resposta == 8) {
+                System.out.println("Correto! Vamos para o próximo desafio.");
+                falarTexto("Correto! Vamos para o próximo desafio.");
+                break;
+            } else {
+                System.out.println("Errado! Tente novamente.");
+                falarTexto("Errado! Tente novamente.");
+            }
         }
     }
 
     public static void desafio3() {
         Scanner input = new Scanner(System.in);
-        String pergunta = "Desafio três: Quantas vezes o texto será impresso? Para i igual a zero; enquanto i menor que quatro; i mais mais; imprimir Algoritmo.";
-        falarTexto(pergunta);
-        System.out.println("\nDesafio 3: Quantas vezes o texto será impresso?");
-        System.out.println("for(int i = 0; i < 4; i++) {\n    System.out.println(\"Algoritmo\");\n}");
-        falarTexto("Digite o número de vezes:");
-        System.out.print("Digite o número de vezes: ");
-        int resposta = input.nextInt();
-        if (resposta == 4) {
-            falarTexto("Muito bem! Próximo desafio.");
-            System.out.println("Muito bem! Próximo desafio.");
-        } else {
-            falarTexto("Resposta incorreta! O correto era quatro.");
-            System.out.println("Resposta incorreta! O correto era 4.");
+        String enunciado = "Desafio 3: Quantas vezes o texto será impresso?";
+        String codigo = "for(int i = 0; i < 4; i++) {\n    System.out.println(\"Algoritmo\");\n}";
+        String fala = "Quantas vezes o texto será impresso? Para i igual a zero; enquanto i menor que quatro; i mais mais; imprimir Algoritmo.";
+        while (true) {
+            System.out.println("\n" + enunciado);
+            System.out.println(codigo);
+            falarTexto(fala);
+            int escolha;
+            do {
+                System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
+                escolha = input.nextInt();
+                input.nextLine();
+                if (escolha == 2) {
+                    falarTexto(fala);
+                }
+            } while (escolha != 1);
+
+            System.out.print("Digite o número de vezes: ");
+            falarTexto("Digite o número de vezes.");
+            int resposta = input.nextInt();
+            if (resposta == 4) {
+                System.out.println("Muito bem! Próximo desafio.");
+                falarTexto("Muito bem! Próximo desafio.");
+                break;
+            } else {
+                System.out.println("Resposta incorreta! Tente novamente.");
+                falarTexto("Resposta incorreta! Tente novamente.");
+            }
         }
     }
 
     public static void desafio4() {
         Scanner input = new Scanner(System.in);
-        String pergunta = "Desafio quatro: Qual será o valor final de soma? int soma igual a zero; para i igual a um; enquanto i menor ou igual a três; i mais mais; soma mais igual a i.";
-        falarTexto(pergunta);
-        System.out.println("\nDesafio 4: Qual será o valor final de 'soma'?");
-        System.out.println("int soma = 0;\nfor(int i = 1; i <= 3; i++) {\n    soma += i;\n}");
-        falarTexto("Digite o valor final de soma:");
-        System.out.print("Digite o valor final de soma: ");
-        int resposta = input.nextInt();
-        if (resposta == 6) {
-            falarTexto("Acertou! Vamos ao último desafio.");
-            System.out.println("Acertou! Vamos ao último desafio.");
-        } else {
-            falarTexto("Errado! O valor correto era seis.");
-            System.out.println("Errado! O valor correto era 6.");
+        String enunciado = "Desafio 4: Qual será o valor final de 'soma'?";
+        String codigo = "int soma = 0;\nfor(int i = 1; i <= 3; i++) {\n    soma += i;\n}";
+        String fala = "Qual será o valor final da variável soma? Soma começa em zero. Para i igual a um; enquanto i menor ou igual a três; i mais mais; soma recebe soma mais i.";
+        while (true) {
+            System.out.println("\n" + enunciado);
+            System.out.println(codigo);
+            falarTexto(fala);
+            int escolha;
+            do {
+                System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
+                escolha = input.nextInt();
+                input.nextLine();
+                if (escolha == 2) {
+                    falarTexto(fala);
+                }
+            } while (escolha != 1);
+
+            System.out.print("Digite o valor final de soma: ");
+            falarTexto("Digite o valor final de soma.");
+            int resposta = input.nextInt();
+            if (resposta == 6) {
+                System.out.println("Acertou! Vamos ao último desafio.");
+                falarTexto("Acertou! Vamos ao último desafio.");
+                break;
+            } else {
+                System.out.println("Errado! Tente novamente.");
+                falarTexto("Errado! Tente novamente.");
+            }
         }
     }
 
     public static void desafio5() {
         Scanner input = new Scanner(System.in);
-        String pergunta = "Desafio cinco: Qual dessas opções representa um algoritmo para inverter um número inteiro?";
+        String enunciado = "Desafio 5: Qual dessas opções representa um algoritmo para inverter um número inteiro?";
         String opcoes = "A: Receber o número, dividir por dois e imprimir o resultado. "
                 + "B: Receber o número, converter para string, inverter e converter de volta para inteiro. "
                 + "C: Receber o número, somar dez e imprimir. "
                 + "D: Receber o número, multiplicar por menos um e imprimir.";
-        falarTexto(pergunta);
-        System.out.println("\nDesafio 5: Qual dessas opções representa um algoritmo para inverter um número inteiro?");
-        falarTexto(opcoes);
-        System.out.println("A) Receber o número, dividir por 2 e imprimir o resultado\n" +
-                "B) Receber o número, converter para string, inverter e converter de volta para inteiro\n" +
-                "C) Receber o número, somar 10 e imprimir\n" +
-                "D) Receber o número, multiplicar por -1 e imprimir");
-        falarTexto("Digite a letra da opção correta:");
-        System.out.print("Digite a letra da opção correta: ");
-        String resposta = input.next().toUpperCase();
-        if (resposta.equals("B")) {
-            falarTexto("Parabéns! Você concluiu todos os desafios!");
-            System.out.println("Parabéns! Você concluiu todos os desafios!");
-        } else {
-            falarTexto("Resposta incorreta! A opção correta era B.");
-            System.out.println("Resposta incorreta! A opção correta era B.");
+        String fala = "Qual dessas opções representa um algoritmo para inverter um número inteiro? Opção A: Receber o número, dividir por dois e imprimir o resultado. Opção B: Receber o número, converter para string, inverter e converter de volta para inteiro. Opção C: Receber o número, somar dez e imprimir. Opção D: Receber o número, multiplicar por menos um e imprimir.";
+        while (true) {
+            System.out.println("\n" + enunciado);
+            System.out.println(opcoes);
+            falarTexto(fala);
+            int escolha;
+            do {
+                System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
+                escolha = input.nextInt();
+                input.nextLine();
+                if (escolha == 2) {
+                    falarTexto(fala);
+                }
+            } while (escolha != 1);
+
+            System.out.print("Digite a letra da opção correta: ");
+            falarTexto("Digite a letra da opção correta.");
+            String resposta = input.next().toUpperCase();
+            if (resposta.equals("B")) {
+                System.out.println("Parabéns! Você concluiu todos os desafios!");
+                falarTexto("Parabéns! Você concluiu todos os desafios!");
+                break;
+            } else {
+                System.out.println("Resposta incorreta! Tente novamente.");
+                falarTexto("Resposta incorreta! Tente novamente.");
+            }
         }
     }
 
