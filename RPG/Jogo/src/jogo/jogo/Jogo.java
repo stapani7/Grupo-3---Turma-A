@@ -72,10 +72,41 @@ public class Jogo {
         }
     }
 
+    public static void desafio4() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\nDesafio 4: Qual será o valor final de 'soma'?");
+        System.out.println("int soma = 0;\nfor(int i = 1; i <= 3; i++) {\n    soma += i;\n}");
+        System.out.print("Digite o valor final de soma: ");
+        int resposta = input.nextInt();
+        if (resposta == 6) {
+            System.out.println("Acertou! Vamos ao último desafio.");
+        } else {
+            System.out.println("Errado! O valor correto era 6.");
+        }
+    }
+
+    public static void desafio5() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\nDesafio 5: Qual dessas opções representa um algoritmo para inverter um número inteiro?");
+        System.out.println("A) Receber o número, dividir por 2 e imprimir o resultado\n" +
+                "B) Receber o número, converter para string, inverter e converter de volta para inteiro\n" +
+                "C) Receber o número, somar 10 e imprimir\n" +
+                "D) Receber o número, multiplicar por -1 e imprimir");
+        System.out.print("Digite a letra da opção correta: ");
+        String resposta = input.next().toUpperCase();
+        if (resposta.equals("B")) {
+            System.out.println("Parabéns! Você concluiu todos os desafios!");
+        } else {
+            System.out.println("Resposta incorreta! A opção correta era B.");
+        }
+    }
+
     public static void main(String[] args) {
         coletarDadosJogador();
         desafio1();
         desafio2();
         desafio3();
+        desafio4();
+        desafio5();
     }
 }
