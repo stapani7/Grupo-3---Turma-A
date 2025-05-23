@@ -19,12 +19,12 @@ public class JogocomVoz {
     }
     
     /**
- * Este método utiliza o PowerShell do Windows para realizar o áudio do texto passado como parâmetro.
- * Ele executa um comando que instancia a classe SpeechSynthesizer do .NET via PowerShell, seleciona a voz "Microsoft Maria Desktop",
- * define o volume e a velocidade da fala, e em seguida fala o texto especificado. É importante observar que o método funciona apenas
- * em ambientes Windows que possuam a voz especificada instalada e o PowerShell habilitado. O texto é sanitizado para evitar erros de
- * sintaxe no PowerShell ao lidar com aspas simples.
- */
+         * Este método utiliza o PowerShell do Windows para realizar o áudio do texto passado como parâmetro.
+         * Ele executa um comando que instancia a classe SpeechSynthesizer do .NET via PowerShell, seleciona a voz "Microsoft Maria Desktop",
+         * define o volume e a velocidade da fala, e em seguida fala o texto especificado. É importante observar que o método funciona apenas
+         * em ambientes Windows que possuam a voz especificada instalada e o PowerShell habilitado. O texto é sanitizado para evitar erros de
+         * sintaxe no PowerShell ao lidar com aspas simples.
+    */
 
     public static void coletarDadosJogador() {
         Scanner input = new Scanner(System.in);
@@ -43,11 +43,11 @@ public class JogocomVoz {
     }
     
     /**
- * Este método coleta dados do jogador através do console, solicitando que ele digite seu nome, curso e turma.
- * Para cada solicitação, a função também chama o método falarTexto para repetir em voz alta o que está sendo pedido,
- * proporcionando uma interação auditiva, que é o diferencial do nosso jogo. Após coletar todas as informações, o método exibe e fala uma mensagem de boas-vindas
- * personalizada com os dados fornecidos pelo usuário. Isso ajuda o usuário a se sentir visto e reconhecido.
- */
+         * Este método coleta dados do jogador através do console, solicitando que ele digite seu nome, curso e turma.
+         * Para cada solicitação, a função também chama o método falarTexto para repetir em voz alta o que está sendo pedido,
+         * proporcionando uma interação auditiva, que é o diferencial do nosso jogo. Após coletar todas as informações, o método exibe e fala uma mensagem de boas-vindas
+         * personalizada com os dados fornecidos pelo usuário. Isso ajuda o usuário a se sentir visto e reconhecido.
+     */
 
     public static void desafio1() {
         Scanner input = new Scanner(System.in);
@@ -142,6 +142,24 @@ public class JogocomVoz {
             }
         }
     }
+
+    /**
+         * Este método implementa o segundo desafio do jogo, no qual o jogador deve identificar a saída de um código simples em Java.
+         * O código apresentado no desafio envolve uma comparação entre duas variáveis (`x` e `y`) e imprime um valor baseado no resultado
+         * dessa comparação.
+         * 
+         * O enunciado é impresso e falado, explicando o que o código faz: se `x` for maior que `y`, o programa imprime a soma de `x` e `y`;
+         * caso contrário, imprime a diferença entre `x` e `y`.
+         * 
+         * O jogador deve então inserir a resposta correta. A resposta correta para esse código é `8`, já que a soma de `5` e `3` resulta em `8`.
+         * 
+         * O jogo oferece a opção de repetir a explicação do código caso o jogador não tenha entendido a pergunta, permitindo mais interatividade.
+         * Se a resposta estiver correta, o programa exibe uma mensagem de sucesso e avança para o próximo desafio. Caso contrário, o jogador 
+         * é incentivado a tentar novamente.
+         * 
+         * A interação inclui tanto o texto impresso no console quanto a comunicação auditiva, com as instruções sendo faladas através da 
+         * função `falarTexto`, proporcionando uma experiência mais envolvente e acessível.
+     */
 
     public static void desafio3() {
         Scanner input = new Scanner(System.in);
