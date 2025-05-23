@@ -194,6 +194,22 @@ public class JogocomVoz {
         }
     }
 
+    /**
+         * Este método implementa o terceiro desafio do jogo, onde o jogador deve determinar quantas vezes um texto será impresso
+         * com base em um loop `for` apresentado no código.
+         * 
+         * O código exibido no desafio é um laço `for` que inicia com `i = 0` e continua enquanto `i` for menor que 4, incrementando 
+         * `i` a cada iteração. O código imprime a palavra "Algoritmo" em cada iteração do loop.
+         * 
+         * O enunciado e a explicação do código são apresentados tanto de forma escrita quanto falada, através da função `falarTexto`, 
+         * garantindo que o jogador entenda o que o código faz: imprime o texto "Algoritmo" 4 vezes, pois o loop executa 4 iterações.
+         * 
+         * O jogador deve inserir o número de vezes que o texto será impresso. Se a resposta correta (4) for fornecida, o jogo avança 
+         * para o próximo desafio. Caso a resposta esteja errada, o jogador é incentivado a tentar novamente.
+         * 
+         * A interação no jogo é tanto visual quanto auditiva, criando uma experiência mais imersiva e acessível para o jogador.
+     */
+
     public static void desafio4() {
         Scanner input = new Scanner(System.in);
         String enunciado = "Desafio 4: Qual será o valor final de 'soma'?";
