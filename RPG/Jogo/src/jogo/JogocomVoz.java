@@ -48,6 +48,7 @@ public class JogocomVoz {
  * proporcionando uma interação auditiva, que é o diferencial do nosso jogo. Após coletar todas as informações, o método exibe e fala uma mensagem de boas-vindas
  * personalizada com os dados fornecidos pelo usuário. Isso ajuda o usuário a se sentir visto e reconhecido.
  */
+
     public static void desafio1() {
         Scanner input = new Scanner(System.in);
         String introImpresso = "Bem vindo ao seu primeiro desafio. Seu primeiro desafio é numerar a ordem desses acontecimentos.";
@@ -94,6 +95,20 @@ public class JogocomVoz {
         System.out.println("Agora que você já sabe como funciona o jogo, vamos para o próximo desafio");
         falarTexto("Agora que você já sabe como funciona o jogo, vamos para o próximo desafio.");
     }
+
+    /*
+        * Este método implementa o primeiro desafio do jogo. Ele solicita que o jogador organize uma sequência de eventos em uma ordem correta.
+        * O desafio consiste em apresentar ao jogador uma lista de ações numeradas, e ele deve digitar a sequência correta de números 
+        * que representa a ordem correta dos acontecimentos. O jogo oferece a opção de repetir a pergunta caso o jogador queira.
+        * 
+        * O programa começa com uma introdução impressa e falada, detalhando o objetivo do desafio e apresentando as opções de ações.
+        * O jogador deve então fornecer a sequência de números correta (por exemplo: 642973851). Se a resposta estiver errada, ele é 
+        * incentivado a tentar novamente, e o loop continua até que o jogador acerte a sequência. Caso a resposta seja correta, o jogo 
+        * avança para o próximo desafio.
+        * 
+        * A interação é tanto visual (através de impressões no console) quanto auditiva (através da função `falarTexto`, que fala as instruções 
+        * e as respostas). Isso cria uma experiência mais imersiva e acessível para o jogador.
+    */
 
     public static void desafio2() {
         Scanner input = new Scanner(System.in);
