@@ -243,6 +243,25 @@ public class JogocomVoz {
         }
     }
 
+    /**
+         * Este método implementa o quarto desafio do jogo, onde o jogador deve calcular o valor final da variável 'soma'
+         * com base no código apresentado.
+         * 
+         * O código exibido no desafio é um laço `for` que inicia com `i = 1` e continua enquanto `i` for menor ou igual a 3,
+         * incrementando `i` a cada iteração. Em cada iteração, o valor de `i` é somado à variável `soma`.
+         * 
+         * O jogador deve calcular o valor final da variável `soma` após a execução do loop. Como `soma` começa com 0 e o loop
+         * executa três vezes (com `i` assumindo os valores 1, 2 e 3), o valor final de `soma` será a soma desses valores: 1 + 2 + 3 = 6.
+         * 
+         * O enunciado e a explicação do código são apresentados tanto de forma escrita quanto falada, através da função `falarTexto`, 
+         * garantindo que o jogador entenda o que o código faz.
+         * 
+         * O jogador deve inserir o valor final de `soma`. Se a resposta correta (6) for fornecida, o jogo avança para o próximo desafio.
+         * Caso a resposta esteja errada, o jogador é incentivado a tentar novamente.
+         * 
+         * A interação no jogo é tanto visual quanto auditiva, criando uma experiência mais imersiva e acessível para o jogador.
+     */
+
     public static void desafio5() {
         Scanner input = new Scanner(System.in);
         String enunciado = "Desafio 5: Qual dessas opções representa um algoritmo para inverter um número inteiro?";
