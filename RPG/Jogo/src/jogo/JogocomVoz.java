@@ -298,30 +298,6 @@ public class JogocomVoz {
         }
     }
 
-     /**
-         * Este método implementa o quinto desafio do jogo, onde o jogador deve identificar o algoritmo correto para inverter
-         * um número inteiro entre várias opções fornecidas.
-         * 
-         * O enunciado apresenta quatro opções, sendo que a opção correta é a letra "B", que descreve um algoritmo que:
-         * 1. Recebe o número.
-         * 2. Converte o número para uma string.
-         * 3. Inverte a string.
-         * 4. Converte a string de volta para inteiro.
-         * 
-         * As outras opções são incorretas:
-         * - A: Não realiza a inversão do número, apenas o divide por dois.
-         * - C: Soma 10 ao número e imprime o resultado, sem inverter o número.
-         * - D: Multiplica o número por -1, o que não inverte o número, mas o transforma em seu oposto.
-         * 
-         * O enunciado e as opções são apresentados tanto de forma escrita quanto falada, por meio da função `falarTexto`, 
-         * para garantir que o jogador compreenda as alternativas.
-         * 
-         * O jogador deve inserir a letra correspondente à opção correta ("B"). Caso a resposta esteja correta, o jogo parabeniza
-         * o jogador e conclui todos os desafios. Se a resposta for errada, o jogador é incentivado a tentar novamente.
-         * 
-         * A interação no jogo é tanto visual quanto auditiva, promovendo uma experiência mais imersiva e acessível para o jogador.
-     */
-
     public static void main(String[] args) {
         coletarDadosJogador();
         desafio1();
@@ -331,10 +307,3 @@ public class JogocomVoz {
         desafio5();
     }
 }
-
-
-    /**
-         * Método principal que orquestra a execução dos desafios.
-         * Primeiro, coleta os dados do jogador e então inicia cada desafio em sequência, do 1 ao 5.
-         * O fluxo de desafios ocorre de forma linear, e o jogador deve responder corretamente para avançar.
-     */
