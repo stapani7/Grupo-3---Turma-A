@@ -42,7 +42,7 @@ public static void falarTexto(String texto) {
 
 ### Erro: Se algo der errado, exibe uma mensagem de erro no console.
 
-
+  ------------------------------------------------------------------------------------
 
 
 # Explicação - coletarDadosJogador
@@ -94,7 +94,7 @@ public static void coletarDadosJogador() {
 ### Exibição: Exibe a mensagem de boas-vindas no console e a lê em voz alta.
 
 
-
+  ------------------------------------------------------------------------------------
 
 
 
@@ -192,7 +192,7 @@ public static void desafio1() {
 ### Uso de falarTexto: Toda a interação e as instruções são lidas em voz alta para o usuário.
 
 
-
+  ------------------------------------------------------------------------------------
 
 
 
@@ -275,7 +275,7 @@ public static void desafio2() {
 
 ### Verificação: Se a resposta estiver correta, o jogo avança para o próximo desafio. Caso contrário, o jogador é incentivado a tentar novamente.
 
-
+  ------------------------------------------------------------------------------------
 
 # Explicação - Função Desafio 3
 ------------------------------------------------------------------------------------
@@ -352,7 +352,7 @@ public static void desafio3() {
 ### Verificação: Se a resposta estiver correta, o jogo avança para o próximo desafio. Se errar, o jogador é incentivado a tentar novamente.
 
 
-
+  ------------------------------------------------------------------------------------
 
 
 
@@ -420,7 +420,7 @@ public static void desafio4() {
 
 ### Verificação: Se a resposta estiver correta, o jogo avança para o próximo desafio. Caso contrário, o jogador é incentivado a tentar novamente.
 
-
+  ------------------------------------------------------------------------------------
 
 # Explicação - Função Desafio 5
 ------------------------------------------------------------------------------------
@@ -501,7 +501,7 @@ public static void desafio5() {
 
 ### Verificação: Se a resposta estiver correta, o jogo avança e exibe uma mensagem de parabéns. Caso contrário, o jogador é incentivado a tentar novamente.
 
-
+  ------------------------------------------------------------------------------------
 
 # Explicação - Main
 ------------------------------------------------------------------------------------
