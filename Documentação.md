@@ -45,7 +45,6 @@ public static void falarTexto(String texto) {
 
 
 
-
 # Explicação - coletarDadosJogador
 ------------------------------------------------------------------------------------
   Este método coleta dados do jogador através do console, solicitando que ele digite seu nome, curso e turma.
