@@ -333,3 +333,9 @@ public class JogocomVoz {
         desafio5();
     }
 }
+
+    /**
+         * Método principal que orquestra a execução dos desafios.
+         * Primeiro, coleta os dados do jogador e então inicia cada desafio em sequência, do 1 ao 5.
+         * O fluxo de desafios ocorre de forma linear, e o jogador deve responder corretamente para avançar.
+     */
