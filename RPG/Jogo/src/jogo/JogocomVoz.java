@@ -52,7 +52,7 @@ public class JogocomVoz {
     public static void desafio1() {
         Scanner input = new Scanner(System.in);
         String introImpresso = "Bem vindo ao seu primeiro desafio. Seu primeiro desafio é numerar a ordem desses acontecimentos.";
-        String introFala = "Bem vindo ao seu primeiro desafio. Se você está aqui, tem o potencial de mudar o mundo problemático em que vivemos. Seu primeiro desafio é numerar a ordem desses acontecimentos. Vamos ver se você sabe algo de algoritmos.";
+        String introFala = "Bem vindo ao seu primeiro desafio. Se você está aqui, tem o potencial de mudar o mundo problemático em que vivemos. Seu primeiro desafio é numerar a ordem desses acontecimentos seguindo a logica. Vamos ver se você sabe algo de algoritmos.";
         String opcoes = "1 - Sair do banco.\n"
                 + "2 - Aguardar a vez de ser atendido.\n"
                 + "3 - Digitar a senha.\n"
