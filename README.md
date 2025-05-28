@@ -27,7 +27,7 @@ Grupo-3---Turma-A/
 │   └── Jogo/
 │       └── src/
 │           └── jogo/
-│               ├── Jogo.java
+│               ├── JogocomVoz.java
 ├── Documentação.md
 ├── .gitignore
 ```
@@ -42,7 +42,7 @@ Grupo-3---Turma-A/
 
 2. Abra o projeto em sua IDE Java preferida.
 
-3. Navegue até o arquivo `Jogo.java` localizado em `RPG/Jogo/src/jogo/`.
+3. Navegue até o arquivo `JogocomVoz.java` localizado em `RPG/Jogo/src/jogo/`.
 
 4. Compile e execute o projeto.
 
