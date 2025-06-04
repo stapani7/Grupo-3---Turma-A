@@ -106,7 +106,7 @@ public class JogocomVoz {
 
          // Entre desafios - avanço da história
         String historiaEntre2e3 = "\nVocê avançou mais uma etapa. Cada desafio revela mais sobre o verdadeiro propósito dessa torre. "
-                + "A organização quer encontrar alguém que não apenas saiba programar, mas que tenha coragem e caráter."; // MODIFICADO
+                + "A organização quer encontrar alguém que não apenas saiba programar, mas que tenha coragem e caráter.";
         System.out.println(historiaEntre2e3); 
         falarTexto(historiaEntre2e3); 
 
@@ -180,7 +180,7 @@ public class JogocomVoz {
 
          // Entre desafios - avanço da história
         String historiaEntre4e5 = "\nÚltimos passos! A organização observa. Você sabe que a próxima decisão pode mudar o destino do mundo. "
-                + "Mas uma dúvida começa a crescer: Quem realmente está por trás disso tudo?"; // MODIFICADO
+                + "Mas uma dúvida começa a crescer: Quem realmente está por trás disso tudo?";
         System.out.println(historiaEntre4e5); 
         falarTexto(historiaEntre4e5); 
 
@@ -218,14 +218,13 @@ public class JogocomVoz {
                 falarTexto("Resposta incorreta! Tente novamente.");
             }
         }
-    }
 
-    // Final da história e desafio final
+        // Final da história e desafio final
         String finalHistoria = "\nMas agora, o maior mistério: Quem é essa organização? "
                 + "Você descobre que não é um grupo salvador, mas o próprio governo corrupto testando os possíveis opositores. "
                 + "Seu último desafio é o mais difícil: criar um algoritmo que exponha a corrupção e abra os olhos da população.\n"
-                + "Este é o desafio FINAL, onde sua genialidade e caráter podem mudar o destino de todos."+
-                "Dica: Tem haver com a resposta dos desafios 3 e 4"; //
+                + "Este é o desafio FINAL, onde sua genialidade e caráter podem mudar o destino de todos."
+                + "Dica: Tem haver com a resposta dos desafios 3 e 4";
 
         System.out.println(finalHistoria); 
         falarTexto(finalHistoria);
@@ -254,7 +253,6 @@ public class JogocomVoz {
         input.close();
     }
 
-
     public static void falarTexto(String texto) {
         try {
             String comando = "PowerShell -Command \"Add-Type -AssemblyName System.Speech; "
@@ -273,4 +271,4 @@ public class JogocomVoz {
     public static void main(String[] args) {
         jogoCompleto();
     }
-}   
+}
