@@ -1,548 +1,82 @@
-# Explicação - Função falarTexto
+#  Torre dos Desafios
 ------------------------------------------------------------------------------------
- Este método utiliza o PowerShell do Windows para realizar o áudio do texto passado como parâmetro.
-  Ele executa um comando que instancia a classe SpeechSynthesizer do .NET via PowerShell, seleciona a voz "Microsoft Maria Desktop",
-  define o volume e a velocidade da fala, e em seguida fala o texto especificado. 
+Esse é um jogo interativo feito em Java que mistura lógica de programação com uma história imersiva. A ideia é levar o jogador por uma jornada onde cada fase representa um desafio que testa conhecimento e raciocínio, com uma pegada crítica sobre corrupção e liderança.
+
+
+##  Sobre o projeto
+
+O jogo foi pensado como uma experiência educativa e reflexiva. Através de uma sequência de perguntas e desafios, o jogador vai descobrindo aos poucos que está dentro de um teste maior do que imagina. Tudo é conduzido por uma narração via voz (usando o PowerShell), tornando a experiência mais dinâmica e acessível.
+
+ ---
+
+
+
+ ## Funcionalidades
+
+* Narração por voz usando a biblioteca System.Speech do PowerShell (voz "Microsoft Maria").
+
+* Personalização do jogo com o nome do jogador.
+
+* Cinco desafios com temas de lógica e programação.
+
+* Repetição das perguntas via comando.
+
+* História dividida em partes que se conectam aos desafios.
+
+* Final com um "plot twist" que encerra a experiência com uma mensagem crítica.
+
+---
+
+## `jogoCompleto()`
+* Basicamente essa função é o que faz quase tudo, ela é responsável por:
+
+* Apresentar a introdução narrativa, explicando o contexto do jogo.
+
+* Coletar o nome do jogador, personalizando a experiência.
+
+* Rodar uma sequência de 5 desafios interativos, cada um com lógica de programação.
+
+* Gerenciar a narração por voz em tempo real, usando PowerShell.
+
+* Inserir pausas narrativas entre os desafios, fazendo o jogador se sentir dentro de uma história.
+
+* Apresentar um desafio final simbólico, que fecha a trama com um sentido maior.
+
+* Validar todas as respostas dos jogadores, dando feedback imediato com voz e texto.
+
+---
+
+## `falarTexto(String texto)`
+Esse método utiliza o PowerShell para ler textos em voz alta. É compatível com Windows e usa a voz "Microsoft Maria" (padrão do sistema).
   
-  É importante observar que o método funciona apenas
-  em ambientes Windows que possuam a voz especificada instalada e o PowerShell habilitado. O texto é sanitizado para evitar erros de
-  sintaxe no PowerShell ao lidar com aspas simples.
-
-  ## Código
-------------------------------------------------------------------------------------
-
-```java
-public static void falarTexto(String texto) {
-    try {
-        String comando = "PowerShell -Command \"Add-Type -AssemblyName System.Speech; "
-                + "$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; "
-                + "$speak.SelectVoice('Microsoft Maria Desktop'); "
-                + "$speak.Volume = 75; "
-                + "$speak.Rate = 5; "
-                + "$speak.Speak('" + texto.replace("'", "''") + "');\"";
-        Process p = Runtime.getRuntime().exec(comando);
-        p.waitFor();
-    } catch (Exception e) {
-        System.out.println("Erro ao tentar falar: " + e.getMessage());
-    }
-}
-
+```powershell
+Add-Type -AssemblyName System.Speech
+$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer
+$speak.SelectVoice('Microsoft Maria Desktop')
+$speak.Speak('Texto desejado')
 ```
 
-## Como Funciona
-------------------------------------------------------------------------------------
+---
 
+## Desafios
 
+* Sequência lógica em uma situação do dia a dia (banco).
 
-### Entrada: Recebe um texto como parâmetro.
+* Condicional if com soma de variáveis.
 
-### PowerShell: Executa um comando PowerShell para usar a síntese de fala.
+* Loop for simples contando repetições.
 
-### Fala: Converte o texto em fala com a voz "Microsoft Maria Desktop".
+* Soma acumulativa com +=.
 
-### Erro: Se algo der errado, exibe uma mensagem de erro no console.
+* Escolha correta de um algoritmo que inverte um número.
 
-  ------------------------------------------------------------------------------------
+* Desafio final simbólico, que usa conhecimento anterior.
 
+--- 
+### Desenvolvedores 
 
-# Explicação - coletarDadosJogador
-------------------------------------------------------------------------------------
-  Este método coleta dados do jogador através do console, solicitando que ele digite seu nome, curso e turma.
-
-  Para cada solicitação, a função também chama o método falarTexto para repetir em voz alta o que está sendo pedido,
-  proporcionando uma interação auditiva, que é o diferencial do nosso jogo. 
-  
-  Após coletar todas as informações, o método exibe e fala uma mensagem de boas-vindas
-  personalizada com os dados fornecidos pelo usuário. Isso ajuda o usuário a se sentir visto e reconhecido.
-
-
-  ## Código
-  ------------------------------------------------------------------------------------
-
-```java
-Copiar
-Editar
-public static void coletarDadosJogador() {
-    Scanner input = new Scanner(System.in);
-    System.out.print("Digite seu nome: ");
-    falarTexto("Digite seu nome:");
-    String nome = input.nextLine();
-    System.out.print("Digite seu curso: ");
-    falarTexto("Digite seu curso:");
-    String curso = input.nextLine();
-    System.out.print("Digite sua turma: ");
-    falarTexto("Digite sua turma:");
-    String turma = input.nextLine();
-    String mensagem = "\nBem-vindo, " + nome + " do curso " + curso + ", turma " + turma + "!\n";
-    System.out.println(mensagem);
-    falarTexto(mensagem);
-}
-
-```
-
-## Como Funciona
-------------------------------------------------------------------------------------
-
-
-
-### Entrada de Dados: Solicita ao usuário que insira seu nome, curso e turma.
-
-
-### Uso de falarTexto: Faz as perguntas e lê a mensagem final em voz alta.
-
-
-### Exibição: Exibe a mensagem de boas-vindas no console e a lê em voz alta.
-
-
-  ------------------------------------------------------------------------------------
-
-
-
-
-# Explicação - Função Desafio 1 
-------------------------------------------------------------------------------------
-
-Este método implementa o primeiro desafio do jogo. Ele solicita que o jogador organize uma sequência de eventos em uma ordem correta.
-O desafio consiste em apresentar ao jogador uma lista de ações numeradas, e ele deve digitar a sequência correta de números 
-que representa a ordem correta dos acontecimentos. O jogo oferece a opção de repetir a pergunta caso o jogador queira.
-
-O programa começa com uma introdução impressa e falada, detalhando o objetivo do desafio e apresentando as opções de ações.
-
-O jogador deve então fornecer a sequência de números correta (por exemplo: 642973851). Se a resposta estiver errada, ele é 
-incentivado a tentar novamente, e o loop continua até que o jogador acerte a sequência. Caso a resposta seja correta, o jogo 
-avança para o próximo desafio.
-
-A interação é tanto visual (através de impressões no console) quanto auditiva (através da função `falarTexto`, que fala as instruções 
-e as respostas). Isso cria uma experiência mais imersiva e acessível para o jogador.
-
-
-
-## Código
-------------------------------------------------------------------------------------
-
-```java
-Copiar
-Editar
-public static void desafio1() {
-    Scanner input = new Scanner(System.in);
-    String introImpresso = "Bem vindo ao seu primeiro desafio. Seu primeiro desafio é numerar a ordem desses acontecimentos.";
-    String introFala = "Bem vindo ao seu primeiro desafio. Se você está aqui, tem o potencial de mudar o mundo problemático em que vivemos. Seu primeiro desafio é numerar a ordem desses acontecimentos. Vamos ver se você sabe algo de algoritmos.";
-    String opcoes = "1 - Sair do banco.\n"
-            + "2 - Aguardar a vez de ser atendido.\n"
-            + "3 - Digitar a senha.\n"
-            + "4 - Entrar na fila do caixa.\n"
-            + "5 - Conferir o valor em dinheiro.\n"
-            + "6 - Entrar no banco.\n"
-            + "7 - Informar o valor a ser retirado.\n"
-            + "8 - Pegar o comprovante, o cartão e o dinheiro.\n"
-            + "9 - Entregar o cartão ao funcionário que atende no caixa.\n";
-    String perguntaImpresso = "Coloque todos os números em ordem, de maneira seguida sem espaço ou símbolos, somente números. Exemplo: 4231.";
-    String perguntaFala = "Coloque todos os números em ordem, de maneira seguida sem espaço ou símbolos, somente números. Por exemplo: quatro dois três um.";
-
-    while (true) {
-        System.out.println(introImpresso);
-        System.out.println(opcoes);
-        System.out.println(perguntaImpresso);
-        falarTexto(introFala + " " + opcoes + " " + perguntaFala);
-        int escolha;
-        do {
-            System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
-            escolha = input.nextInt();
-            input.nextLine(); // Limpa o buffer
-            if (escolha == 2) {
-                falarTexto(introFala + " " + opcoes + " " + perguntaFala);
-            }
-        } while (escolha != 1);
-
-        System.out.print("Coloque todos os número em ordem, de maneira seguida sem espaço ou simbolos, somente números(Exemplo:4231): ");
-        falarTexto("Digite sua resposta.");
-        int respostad1 = input.nextInt();
-        if (respostad1 == 642973851) {
-            System.out.println("Parabéns você acertou");
-            falarTexto("Parabéns, você acertou.");
-            break;
-        } else {
-            System.out.println("Tente novamente");
-            falarTexto("Tente novamente.");
-        }
-    }
-    System.out.println("Agora que você já sabe como funciona o jogo, vamos para o próximo desafio");
-    falarTexto("Agora que você já sabe como funciona o jogo, vamos para o próximo desafio.");
-}
-
-```
-## Como Funciona
-------------------------------------------------------------------------------------
-
-
-
-
-### Introdução: Apresenta uma descrição do desafio e as opções que precisam ser ordenadas.
-
-
-### Interação do Usuário: O usuário pode escolher tentar responder ou ouvir novamente as instruções.
-
-
-### Resposta: O jogador deve digitar a sequência correta de números (no caso, 642973851).
-
-
-### Verificação: Se a resposta estiver correta, o jogo parabeniza o jogador e avança para o próximo desafio. Se errar, o jogador é incentivado a tentar novamente.
-
-
-### Uso de falarTexto: Toda a interação e as instruções são lidas em voz alta para o usuário.
-
-
-  ------------------------------------------------------------------------------------
-
-
-
-# Explicação - Função Desafio 2
-------------------------------------------------------------------------------------
-
-Este método implementa o segundo desafio do jogo, no qual o jogador deve identificar a saída de um código simples em Java.
-O código apresentado no desafio envolve uma comparação entre duas variáveis (`x` e `y`) e imprime um valor baseado no resultado
-dessa comparação.
-
-O enunciado é impresso e falado, explicando o que o código faz: se `x` for maior que `y`, o programa imprime a soma de `x` e `y`;
-caso contrário, imprime a diferença entre `x` e `y`.
-
-O jogador deve então inserir a resposta correta. A resposta correta para esse código é `8`, já que a soma de `5` e `3` resulta em `8`.
- 
-O jogo oferece a opção de repetir a explicação do código caso o jogador não tenha entendido a pergunta, permitindo mais interatividade.
-Se a resposta estiver correta, o programa exibe uma mensagem de sucesso e avança para o próximo desafio. Caso contrário, o jogador 
-é incentivado a tentar novamente.
-
-A interação inclui tanto o texto impresso no console quanto a comunicação auditiva, com as instruções sendo faladas através da 
-função `falarTexto`, proporcionando uma experiência mais envolvente e acessível.
-
-## Código
-------------------------------------------------------------------------------------
-```java
-Copiar
-Editar
-public static void desafio2() {
-    Scanner input = new Scanner(System.in);
-    String enunciado = "Desafio 2: Qual será a saída desse algoritmo?";
-    String codigo = "int x = 5;\nint y = 3;\nif(x > y) {\n    System.out.println(x + y);\n} else {\n    System.out.println(x - y);\n}";
-    String fala = "Qual será a saída desse algoritmo? Se x igual a cinco e y igual a três, se x maior que y, imprimir x mais y, senão imprimir x menos y.";
-
-    while (true) {
-        System.out.println("\n" + enunciado);
-        System.out.println(codigo);
-        falarTexto(fala);
-        int escolha;
-        do {
-            System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
-            escolha = input.nextInt();
-            input.nextLine();
-            if (escolha == 2) {
-                falarTexto(fala);
-            }
-        } while (escolha != 1);
-
-        System.out.print("Digite a resposta correta: ");
-        falarTexto("Digite a resposta correta.");
-        int resposta = input.nextInt();
-        if (resposta == 8) {
-            System.out.println("Correto! Vamos para o próximo desafio.");
-            falarTexto("Correto! Vamos para o próximo desafio.");
-            break;
-        } else {
-            System.out.println("Errado! Tente novamente.");
-            falarTexto("Errado! Tente novamente.");
-        }
-    }
-}
-
-```
-
-## Como Funciona
-------------------------------------------------------------------------------------
-
-
-
-### Enunciado e Código: O jogador recebe o enunciado e o código para analisar.
-
-
-### Instruções de Áudio: O desafio é lido em voz alta para o jogador.
-
-
-### Interação: O jogador escolhe se deseja responder ou ouvir as instruções novamente.
-
-
-### Resposta: O jogador precisa digitar a resposta correta. No caso, a saída correta do código é 8.
-
-
-### Verificação: Se a resposta estiver correta, o jogo avança para o próximo desafio. Caso contrário, o jogador é incentivado a tentar novamente.
-
-  ------------------------------------------------------------------------------------
-
-# Explicação - Função Desafio 3
-------------------------------------------------------------------------------------
-
-Este método implementa o terceiro desafio do jogo, onde o jogador deve determinar quantas vezes um texto será impresso
-com base em um loop `for` apresentado no código.
-
-O código exibido no desafio é um laço `for` que inicia com `i = 0` e continua enquanto `i` for menor que 4, incrementando 
-`i` a cada iteração. O código imprime a palavra "Algoritmo" em cada iteração do loop.
-
-O enunciado e a explicação do código são apresentados tanto de forma escrita quanto falada, através da função `falarTexto`, 
-garantindo que o jogador entenda o que o código faz: imprime o texto "Algoritmo" 4 vezes, pois o loop executa 4 iterações.
-
-O jogador deve inserir o número de vezes que o texto será impresso. Se a resposta correta (4) for fornecida, o jogo avança 
-para o próximo desafio. Caso a resposta esteja errada, o jogador é incentivado a tentar novamente.
-
-A interação no jogo é tanto visual quanto auditiva, criando uma experiência mais imersiva e acessível para o jogador.
-
-
-
-## Código
-------------------------------------------------------------------------------------
-```java
-public static void desafio3() {
-    Scanner input = new Scanner(System.in);
-    String enunciado = "Desafio 3: Quantas vezes o texto será impresso?";
-    String codigo = "for(int i = 0; i < 4; i++) {\n    System.out.println(\"Algoritmo\");\n}";
-    String fala = "Quantas vezes o texto será impresso? Para i igual a zero; enquanto i menor que quatro; i mais mais; imprimir Algoritmo.";
-
-    while (true) {
-        System.out.println("\n" + enunciado);
-        System.out.println(codigo);
-        falarTexto(fala);
-        int escolha;
-        do {
-            System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
-            escolha = input.nextInt();
-            input.nextLine();
-            if (escolha == 2) {
-                falarTexto(fala);
-            }
-        } while (escolha != 1);
-
-        System.out.print("Digite o número de vezes: ");
-        falarTexto("Digite o número de vezes.");
-        int resposta = input.nextInt();
-        if (resposta == 4) {
-            System.out.println("Muito bem! Próximo desafio.");
-            falarTexto("Muito bem! Próximo desafio.");
-            break;
-        } else {
-            System.out.println("Resposta incorreta! Tente novamente.");
-            falarTexto("Resposta incorreta! Tente novamente.");
-        }
-    }
-}
-```
-## Como Funciona
-------------------------------------------------------------------------------------
-
-
-### Enunciado e Código: O jogador é apresentado ao enunciado do desafio e ao código do loop.
-
-
-### Instruções de Áudio: O enunciado e o código são lidos em voz alta para o jogador.
-
-
-### Interação: O jogador decide se quer responder ou ouvir as instruções novamente.
-
-
-### Resposta: O jogador deve identificar quantas vezes o texto "Algoritmo" será impresso. A resposta correta é 4.
-
-
-### Verificação: Se a resposta estiver correta, o jogo avança para o próximo desafio. Se errar, o jogador é incentivado a tentar novamente.
-
-
-  ------------------------------------------------------------------------------------
-
-
-
-# Explicação - Função Desafio 4
-------------------------------------------------------------------------------------
-
-Este método implementa o quarto desafio do jogo, onde o jogador deve calcular o valor final da variável 'soma'
-com base no código apresentado.
-
-O código exibido no desafio é um laço `for` que inicia com `i = 1` e continua enquanto `i` for menor ou igual a 3,
-incrementando `i` a cada iteração. Em cada iteração, o valor de `i` é somado à variável `soma`.
-
-O jogador deve calcular o valor final da variável `soma` após a execução do loop. Como `soma` começa com 0 e o loop
-executa três vezes (com `i` assumindo os valores 1, 2 e 3), o valor final de `soma` será a soma desses valores: 1 + 2 + 3 = 6.
-     
-
-     
-## Código
-------------------------------------------------------------------------------------
-```java
-public static void desafio4() {
-    Scanner input = new Scanner(System.in);
-    String enunciado = "Desafio 4: Qual será o valor final de 'soma'?";
-    String codigo = "int soma = 0;\nfor(int i = 1; i <= 3; i++) {\n    soma += i;\n}";
-    String fala = "Qual será o valor final da variável soma? Soma começa em zero. Para i igual a um; enquanto i menor ou igual a três; i mais mais; soma recebe soma mais i.";
-
-    while (true) {
-        System.out.println("\n" + enunciado);
-        System.out.println(codigo);
-        falarTexto(fala);
-        int escolha;
-        do {
-            System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
-            escolha = input.nextInt();
-            input.nextLine();
-            if (escolha == 2) {
-                falarTexto(fala);
-            }
-        } while (escolha != 1);
-
-        System.out.print("Digite o valor final de soma: ");
-        falarTexto("Digite o valor final de soma.");
-        int resposta = input.nextInt();
-        if (resposta == 6) {
-            System.out.println("Acertou! Vamos ao último desafio.");
-            falarTexto("Acertou! Vamos ao último desafio.");
-            break;
-        } else {
-            System.out.println("Errado! Tente novamente.");
-            falarTexto("Errado! Tente novamente.");
-        }
-    }
-}
-```
-## Como Funciona
-------------------------------------------------------------------------------------
-
-### Enunciado e Código: O jogador recebe o enunciado do desafio e o código que realiza a operação sobre a variável soma.
-
-### Instruções de Áudio: O enunciado e o código são lidos em voz alta para o jogador.
-
-### Interação: O jogador decide se quer responder ou ouvir as instruções novamente.
-
-### Resposta: O jogador deve calcular o valor final da variável soma. A resposta correta é 6, pois o loop soma os valores de 1 + 2 + 3.
-
-### Verificação: Se a resposta estiver correta, o jogo avança para o próximo desafio. Caso contrário, o jogador é incentivado a tentar novamente.
-
-  ------------------------------------------------------------------------------------
-
-# Explicação - Função Desafio 5
-------------------------------------------------------------------------------------
-
-Este método implementa o quinto desafio do jogo, onde o jogador deve identificar o algoritmo correto para inverter
-um número inteiro entre várias opções fornecidas.
-      
-O enunciado apresenta quatro opções, sendo que a opção correta é a letra "B", que descreve um algoritmo que:
-1. Recebe o número.
-2. Converte o número para uma string.
-3. Inverte a string.
-4. Converte a string de volta para inteiro.
-      
-As outras opções são incorretas:
-- A: Não realiza a inversão do número, apenas o divide por dois.
-- C: Soma 10 ao número e imprime o resultado, sem inverter o número.
-- D: Multiplica o número por -1, o que não inverte o número, mas o transforma em seu oposto.
-      
-O enunciado e as opções são apresentados tanto de forma escrita quanto falada, por meio da função `falarTexto`, 
-para garantir que o jogador compreenda as alternativas.
-      
-O jogador deve inserir a letra correspondente à opção correta ("B"). Caso a resposta esteja correta, o jogo parabeniza
-o jogador e conclui todos os desafios. Se a resposta for errada, o jogador é incentivado a tentar novamente.
-      
-A interação no jogo é tanto visual quanto auditiva, promovendo uma experiência mais imersiva e acessível para o jogador.
-
-
-## Código
-```java
-public static void desafio5() {
-    Scanner input = new Scanner(System.in);
-    String enunciado = "Desafio 5: Qual dessas opções representa um algoritmo para inverter um número inteiro?";
-    String opcoes = "A: Receber o número, dividir por dois e imprimir o resultado. "
-            + "B: Receber o número, converter para string, inverter e converter de volta para inteiro. "
-            + "C: Receber o número, somar dez e imprimir. "
-            + "D: Receber o número, multiplicar por menos um e imprimir.";
-    String fala = "Qual dessas opções representa um algoritmo para inverter um número inteiro? Opção A: Receber o número, dividir por dois e imprimir o resultado. Opção B: Receber o número, converter para string, inverter e converter de volta para inteiro. Opção C: Receber o número, somar dez e imprimir. Opção D: Receber o número, multiplicar por menos um e imprimir.";
-
-    while (true) {
-        System.out.println("\n" + enunciado);
-        System.out.println(opcoes);
-        falarTexto(fala);
-        int escolha;
-        do {
-            System.out.println("\nDigite 1 para responder ou 2 para repetir a pergunta:");
-            escolha = input.nextInt();
-            input.nextLine();
-            if (escolha == 2) {
-                falarTexto(fala);
-            }
-        } while (escolha != 1);
-
-        System.out.print("Digite a letra da opção correta: ");
-        falarTexto("Digite a letra da opção correta.");
-        String resposta = input.next().toUpperCase();
-        if (resposta.equals("B")) {
-            System.out.println("Parabéns! Você concluiu todos os desafios!");
-            falarTexto("Parabéns! Você concluiu todos os desafios!");
-            break;
-        } else {
-            System.out.println("Resposta incorreta! Tente novamente.");
-            falarTexto("Resposta incorreta! Tente novamente.");
-        }
-    }
-}
-```
-## Como Funciona
-------------------------------------------------------------------------------------
-
-
-### Enunciado e Opções: O jogador recebe o enunciado do desafio e as quatro opções para escolher a resposta correta.
-
-### Instruções de Áudio: O enunciado e as opções são lidos em voz alta para o jogador.
-
-### Interação: O jogador decide se quer responder ou ouvir as opções novamente.
-
-### Resposta: O jogador deve escolher a letra que representa o algoritmo correto para inverter um número inteiro. A resposta correta é B, que descreve o algoritmo de inverter o número convertendo para string, invertendo e convertendo de volta para inteiro.
-
-### Verificação: Se a resposta estiver correta, o jogo avança e exibe uma mensagem de parabéns. Caso contrário, o jogador é incentivado a tentar novamente.
-
-  ------------------------------------------------------------------------------------
-
-# Explicação - Main
-------------------------------------------------------------------------------------
-
-Método principal que orquestra a execução dos desafios.
-Primeiro, coleta os dados do jogador e então inicia cada desafio em sequência, do 1 ao 5.
-O fluxo de desafios ocorre de forma linear, e o jogador deve responder corretamente para avançar.
-
-
- ## Código
- ------------------------------------------------------------------------------------
-```java
-Copiar
-Editar
-public static void main(String[] args) {
-    coletarDadosJogador();
-    desafio1();
-    desafio2();
-    desafio3();
-    desafio4();
-    desafio5();
-}
-```
-## Como Funciona
-------------------------------------------------------------------------------------
-
-
-### Coleta de Dados do Jogador: A função coletarDadosJogador() é chamada inicialmente para coletar o nome, curso e turma do jogador. Esses dados são usados para personalizar a experiência do jogo.
-
-###  Execução dos Desafios: Em seguida, a função chama, em sequência, os cinco desafios:
-
-###  desafio1()
-
-###  desafio2()
-
-###  desafio3()
-
-###  desafio4()
-
-###  desafio5()
-
-###  Cada função corresponde a um desafio específico, onde o jogador deve responder a perguntas sobre algoritmos.
-
-###  Fluxo de Jogo: O fluxo de jogo é linear. O jogador passa de um desafio para o próximo, com a função main garantindo que todos os desafios sejam executados de forma sequencial.
+* Arthur Vieira Santana **(https://github.com/ArtVieiraSantana)**
+* Guilherme Pedroso Sanches **(https://github.com/gsanches-dev11)**
+* Joâo Paulo Figueiredo Serafim **(https://github.com/joaopaulofserafim)**
+* Mateus Stapani **(https://github.com/stapani7)**
+* Patrick Assis Vieira **(https://github.com/patrick060)**
