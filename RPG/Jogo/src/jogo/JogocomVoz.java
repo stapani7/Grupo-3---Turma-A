@@ -271,4 +271,4 @@ public class JogocomVoz {
     public static void main(String[] args) {
         jogoCompleto();
     }
-}
+}   
