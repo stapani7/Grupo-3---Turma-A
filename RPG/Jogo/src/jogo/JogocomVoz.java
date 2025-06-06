@@ -258,8 +258,8 @@ public class JogocomVoz {
             String comando = "PowerShell -Command \"Add-Type -AssemblyName System.Speech; "
                     + "$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; "
                     + "$speak.SelectVoice('Microsoft Maria Desktop'); "
-                    + "$speak.Volume = 75; "
-                    + "$speak.Rate = 5; "
+                    + "$speak.Volume = 100; "
+                    + "$speak.Rate = 2; "
                     + "$speak.Speak('" + texto.replace("'", "''") + "');\"";
             Process p = Runtime.getRuntime().exec(comando);
             p.waitFor();
