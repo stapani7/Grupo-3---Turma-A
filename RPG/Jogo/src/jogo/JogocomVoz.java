@@ -7,7 +7,7 @@ public class JogocomVoz {
         Scanner input = new Scanner(System.in);
 
         //Introdução a história
-        String historiaInicio = "Num mundo onde algoritmos e a corrupção reinam, uma organização secreta criou um teste para encontrar "
+        String historiaInicio = "\nNum mundo onde algoritmos e a corrupção reinam, uma organização secreta criou um teste para encontrar "
                 + "alguém capaz de governar de forma justa e democrática. "
                 + "Essa pessoa precisaria ser genial em programação para corrigir os erros e falhas criadas por governos corruptos "
                 + "em benefício próprio. A organização criou uma torre de desafios, um teste mental e físico, para avaliar o conhecimento e caráter do escolhido.";
@@ -56,12 +56,12 @@ public class JogocomVoz {
             System.out.print("Coloque todos os número em ordem, de maneira seguida sem espaço ou simbolos, somente números(Exemplo:4231): ");
             falarTexto("Digite sua resposta.");
             int respostad1 = input.nextInt();
-            if (respostad1 == 642973851 || respostad1 == 642793851) {
+            if (respostad1 == 642973851 || respostad1 == 642793851) { // duas respostas possíveis
                 System.out.println("Parabéns você acertou");
                 falarTexto("Parabéns, você acertou.");
                 break;
             } else {
-                System.out.println("Tente novamente");
+                System.out.println("Tente novamente\n");
                 falarTexto("Tente novamente.");
             }
         }
@@ -112,7 +112,7 @@ public class JogocomVoz {
 
         // Desafio 3
         String enunciado3 = "Desafio 3: Quantas vezes o texto será impresso?";
-        String codigo3 = "for(int i = 0; i < 4; i++) {\n    System.out.println(\"Algoritmo\");\n}";
+        String codigo3 = "for(int i = 0; i < 4; i++) {\n    System.out.println(\"Algoritmo\");\n}"; // 0, 1, 2, 3
         String fala3 = "Quantas vezes o texto será impresso? Para i igual a zero; enquanto i menor que quatro; i mais mais; imprimir Algoritmo.";
         while (true) {
             System.out.println("\n" + enunciado3);
@@ -187,11 +187,11 @@ public class JogocomVoz {
 
         // Desafio 5
         String enunciado5 = "Desafio 5: Qual dessas opções representa um algoritmo para inverter um número inteiro?";
-        String opcoes5 = "A: Receber o número, dividir por dois e imprimir o resultado. "
-                + "B: Receber o número, converter para string, inverter e converter de volta para inteiro. "
-                + "C: Receber o número, somar dez e imprimir. "
-                + "D: Receber o número, multiplicar por menos um e imprimir.";
-        String fala5 = "Qual dessas opções representa um algoritmo para inverter um número inteiro? Opção A: Receber o número, dividir por dois e imprimir o resultado. Opção B: Receber o número, converter para string, inverter e converter de volta para inteiro. Opção C: Receber o número, somar dez e imprimir. Opção D: Receber o número, multiplicar por menos um e imprimir.";
+        String opcoes5 = "A: Receber o número, dividir por dois e imprimir o resultado. \n"
+                + "B: Receber o número, converter para string, inverter e converter de volta para inteiro. \n"
+                + "C: Receber o número, somar dez e imprimir. \n"
+                + "D: Receber o número, multiplicar por menos um e imprimir.\n";
+        String fala5 = "Qual dessas opções representa um algoritmo para inverter um número inteiro?\n Opção A: Receber o número, dividir por dois e imprimir o resultado. \nOpção B: Receber o número, converter para string, inverter e converter de volta para inteiro. \nOpção C: Receber o número, somar dez e imprimir. \nOpção D: Receber o número, multiplicar por menos um e imprimir.";
         while (true) {
             System.out.println("\n" + enunciado5);
             System.out.println(opcoes5);
@@ -221,9 +221,9 @@ public class JogocomVoz {
 
         // Final da história e desafio final
         String finalHistoria = "\nMas agora, o maior mistério: Quem é essa organização? "
-                + "Você descobre que não é um grupo salvador, mas o próprio governo corrupto testando os possíveis opositores. "
-                + "Seu último desafio é o mais difícil: criar um algoritmo que exponha a corrupção e abra os olhos da população.\n"
-                + "Este é o desafio FINAL, onde sua genialidade e caráter podem mudar o destino de todos."
+                + "Você descobre que não é um grupo salvador, mas o próprio governo corrupto testando os possíveis opositores. \n"
+                + "Seu último desafio é o mais difícil: Digitar a senha que compartilha e divulga todos os dados da corrupção e abra os olhos da população.\n"
+                + "Este é o desafio FINAL, onde sua genialidade e caráter podem mudar o destino de todos"
                 + "Dica: Tem haver com a resposta dos desafios 3 e 4";
 
         System.out.println(finalHistoria); 
@@ -250,7 +250,7 @@ public class JogocomVoz {
             }
         }
 
-        input.close();
+        
     }
 
     public static void falarTexto(String texto) {
