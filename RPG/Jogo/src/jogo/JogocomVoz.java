@@ -56,12 +56,12 @@ public class JogocomVoz {
             System.out.print("Coloque todos os número em ordem, de maneira seguida sem espaço ou simbolos, somente números(Exemplo:4231): ");
             falarTexto("Digite sua resposta.");
             int respostad1 = input.nextInt();
-            if (respostad1 == 642973851 || respostad1 == 642793851) {
+            if (respostad1 == 642973851 || respostad1 == 642793851) { // duas respostas possíveis
                 System.out.println("Parabéns você acertou");
                 falarTexto("Parabéns, você acertou.");
                 break;
             } else {
-                System.out.println("Tente novamente");
+                System.out.println("Tente novamente\n");
                 falarTexto("Tente novamente.");
             }
         }
@@ -112,7 +112,7 @@ public class JogocomVoz {
 
         // Desafio 3
         String enunciado3 = "Desafio 3: Quantas vezes o texto será impresso?";
-        String codigo3 = "for(int i = 0; i < 4; i++) {\n    System.out.println(\"Algoritmo\");\n}";
+        String codigo3 = "for(int i = 0; i < 4; i++) {\n    System.out.println(\"Algoritmo\");\n}"; // 0, 1, 2, 3
         String fala3 = "Quantas vezes o texto será impresso? Para i igual a zero; enquanto i menor que quatro; i mais mais; imprimir Algoritmo.";
         while (true) {
             System.out.println("\n" + enunciado3);
@@ -222,8 +222,8 @@ public class JogocomVoz {
         // Final da história e desafio final
         String finalHistoria = "\nMas agora, o maior mistério: Quem é essa organização? "
                 + "Você descobre que não é um grupo salvador, mas o próprio governo corrupto testando os possíveis opositores. \n"
-                + "Seu último desafio é o mais difícil: criar um algoritmo que exponha a corrupção e abra os olhos da população.\n"
-                + "Este é o desafio FINAL, onde sua genialidade e caráter podem mudar o destino de todos."
+                + "Seu último desafio é o mais difícil: Digitar a senha que compartilha e divulga todos os dados da corrupção e abra os olhos da população.\n"
+                + "Este é o desafio FINAL, onde sua genialidade e caráter podem mudar o destino de todos"
                 + "Dica: Tem haver com a resposta dos desafios 3 e 4";
 
         System.out.println(finalHistoria); 
